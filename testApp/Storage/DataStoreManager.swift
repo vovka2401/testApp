@@ -57,25 +57,7 @@ class DataStoreManager {
         }
     }
     
-    func obtainMovies() -> [Movie] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Movie")
-        guard let movies = try? viewContext.fetch(fetchRequest) as? [Movie] else {
-            return []
-        }
-        return movies
-    }
-    
-    func addMovie(title: String, year: Int16) {
-        let movie = Movie(context: viewContext)
-        movie.title = title
-        movie.year = year
-        try? viewContext.save()
-    }
-    
-    func deleteMovie(at number: Int) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Movie")
-        guard let movies = try? viewContext.fetch(fetchRequest) as? [Movie] else { return }
-        viewContext.delete(movies[number])
-        try? viewContext.save()
+    func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
+        return NSFetchRequest<NSFetchRequestResult>(entityName: "Movie")
     }
 }
