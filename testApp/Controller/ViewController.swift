@@ -42,7 +42,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let yearPredicate = NSPredicate(format: "year = %@", String(year))
         fetchRequestResult.predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, yearPredicate])
         
-        if let movies = try? dataStoreManager.viewContext.fetch(fetchRequestResult) as? [Movie], movies.isEmpty {
+        if let movies = try? dataStoreManager.viewContext.fetch(fetchRequestResult), movies.isEmpty {
             let movie = Movie(context: dataStoreManager.persistentContainer.viewContext)
             movie.title = title
             movie.year = year
