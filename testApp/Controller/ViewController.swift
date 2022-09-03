@@ -73,7 +73,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchResultController.sections?[section]
